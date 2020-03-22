@@ -6,18 +6,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.springframework.spring5jokesapp.services.JokesService;
+import com.springframework.spring5jokesapp.services.JokeService;
 
 @Controller
 @RequestMapping(value= {"/",""})
 public class JokesController {
 
 	@Autowired
-	private JokesService jokesService;
+	private JokeService jokeService;
 	
 	@GetMapping
 	public String getJoke(Model model) {
-		String joke = jokesService.generateRandomJokes();
+		String joke = jokeService.getJoke();
 		System.out.println(joke);
 		model.addAttribute("joke", joke);
 		return "chucknorris";
